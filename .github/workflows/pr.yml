@@ -12,6 +12,7 @@ jobs:
         requirements-file: [
           django-2_2.txt,
           django-3_2.txt,
+          django-4_2.txt,
         ]
 
     steps:
