@@ -32,6 +32,7 @@ class ContentExpiryAdmin(admin.ModelAdmin):
     list_display_links = None
     list_filter = (ComplianceNumberFilter, ContentTypeFilter, ('expires', ContentExpiryDateRangeFilter),
                    VersionStateFilter, AuthorFilter)
+    search_help_text = None
     form = ContentExpiryForm
     change_list_template = "djangocms_content_expiry/admin/change_list.html"
     fieldsets = (
