@@ -5,7 +5,7 @@ django-formtools
 django-polymorphic
 
 # Unreleased django-cms 4.0 compatible packages
-https://github.com/FinalAngel/django-cms/archive/75c521c38e734bd4cd39b07ab386986716c8d079.zip#egg=django-cms==4.0.1.dev4
+https://github.com/FinalAngel/django-cms/tarball/release/4.0.1.x#egg=django-cms
 https://github.com/django-cms/djangocms-alias/tarball/master#egg=djangocms-alias
 https://github.com/django-cms/djangocms-moderation/tarball/master#egg=djangocms-moderation
 https://github.com/django-cms/djangocms-versioning/tarball/master#egg=djangocms-versioning
