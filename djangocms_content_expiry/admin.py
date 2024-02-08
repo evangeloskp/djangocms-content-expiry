@@ -2,11 +2,10 @@ import csv
 import datetime
 
 from django.apps import apps
-from django.urls import re_path
 from django.contrib import admin
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.urls import reverse
+from django.urls import re_path, reverse
 from django.utils.html import format_html_join
 from django.utils.translation import gettext_lazy as _
 
