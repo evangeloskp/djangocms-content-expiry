@@ -32,7 +32,6 @@ class ContentExpiryAdmin(admin.ModelAdmin):
     list_display_links = None
     list_filter = (ComplianceNumberFilter, ContentTypeFilter, ('expires', ContentExpiryDateRangeFilter),
                    VersionStateFilter, AuthorFilter)
-    search_help_text = None
     form = ContentExpiryForm
     change_list_template = "djangocms_content_expiry/admin/change_list.html"
     fieldsets = (
@@ -280,7 +279,6 @@ class ContentExpiryAdmin(admin.ModelAdmin):
             'list_filter': list_filter,
             'date_hierarchy': self.date_hierarchy,
             'search_fields': search_fields,
-            'search_help_text': self.search_help_text,
             'list_select_related': self.list_select_related,
             'list_per_page': self.list_per_page,
             'list_max_show_all': self.list_max_show_all,
@@ -288,6 +286,12 @@ class ContentExpiryAdmin(admin.ModelAdmin):
             'model_admin': self,
             'sortable_by': self.sortable_by
         }
+
+        from django import get_version
+        from packaging import version
+        if version.parse(get_version()) >= version.parse('4.0'):
+            changelist_kwargs['search_help_text'] = self.search_help_text
+
         cl = changelist(**changelist_kwargs)
 
         return cl.get_queryset(request)
