@@ -2,7 +2,7 @@ import csv
 import datetime
 
 from django.apps import apps
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib import admin
 from django.http import HttpResponse
 from django.template.loader import render_to_string
@@ -89,7 +89,7 @@ class ContentExpiryAdmin(admin.ModelAdmin):
     def get_urls(self):
         info = self.model._meta.app_label, self.model._meta.model_name
         return [
-            url(
+            re_path(
                 r'^export_csv/$',
                 self.admin_site.admin_view(self.export_to_csv),
                 name="{}_{}_export_csv".format(*info),
