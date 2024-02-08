@@ -279,6 +279,7 @@ class ContentExpiryAdmin(admin.ModelAdmin):
             'list_filter': list_filter,
             'date_hierarchy': self.date_hierarchy,
             'search_fields': search_fields,
+            'search_help_text': self.search_help_text,
             'list_select_related': self.list_select_related,
             'list_per_page': self.list_per_page,
             'list_max_show_all': self.list_max_show_all,
