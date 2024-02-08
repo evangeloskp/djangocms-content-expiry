@@ -160,7 +160,7 @@ class AuthorFilter(admin.SimpleListFilter):
     parameter_name = "created_by"
 
     def lookups(self, request, model_admin):
-        from django.utils.encoding import force_text
+        from django.utils.encoding import force_str
         User = get_user_model()
         options = []
         qs = model_admin.get_queryset(request)
@@ -169,7 +169,7 @@ class AuthorFilter(admin.SimpleListFilter):
 
         for user in users:
             options.append(
-                (force_text(user.pk), user.get_full_name() or user.get_username())
+                (force_str(user.pk), user.get_full_name() or user.get_username())
             )
         return options
 
