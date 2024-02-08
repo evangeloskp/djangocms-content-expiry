@@ -483,7 +483,7 @@ class ContentExpiryChangelistPageContentSiteTestCase(CMSTestCase):
             site=self.site_1
         )
         # Publish the site 1 page content
-        pagecontent_1 = PageContent.objects.filter(page=page_1, language=language).first()
+        pagecontent_1 = PageContent._base_manager.filter(page=page_1, language=language).first()
         self.page_1_version = pagecontent_1.versions.first()
         self.page_1_version.publish(self.superuser)
 
@@ -500,7 +500,7 @@ class ContentExpiryChangelistPageContentSiteTestCase(CMSTestCase):
             site=self.site_2
         )
         # Publish the site 2 page content
-        pagecontent_2 = PageContent.objects.filter(page=page_2, language=language).first()
+        pagecontent_2 = PageContent._base_manager.filter(page=page_2, language=language).first()
         self.page_2_version = pagecontent_2.versions.first()
         self.page_2_version.publish(self.superuser)
 
