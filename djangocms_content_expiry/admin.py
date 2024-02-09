@@ -1,6 +1,9 @@
 import csv
 import datetime
 
+from packaging import version
+
+from django import get_version
 from django.apps import apps
 from django.contrib import admin
 from django.http import HttpResponse
@@ -287,8 +290,6 @@ class ContentExpiryAdmin(admin.ModelAdmin):
             'sortable_by': self.sortable_by
         }
 
-        from django import get_version
-        from packaging import version
         if version.parse(get_version()) >= version.parse('4.0'):
             changelist_kwargs['search_help_text'] = self.search_help_text
 
