@@ -5,6 +5,8 @@ dj-database-url
 django-admin-rangefilter
 django-app-helper
 django-classy-tags>=0.7.2
+django-formtools
+django-polymorphic
 django-sekizai>=0.7
 django-treebeard>=4.3
 djangocms-admin-style>=1.5
