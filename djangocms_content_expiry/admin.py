@@ -1,17 +1,18 @@
 import csv
 import datetime
 
+from django import get_version
 from django.apps import apps
-from django.conf.urls import url
 from django.contrib import admin
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.urls import reverse
+from django.urls import re_path, reverse
 from django.utils.html import format_html_join
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from djangocms_versioning.constants import DRAFT, PUBLISHED
 from djangocms_versioning.helpers import get_preview_url
+from packaging import version
 
 from .conf import DEFAULT_CONTENT_EXPIRY_EXPORT_DATE_FORMAT
 from .constants import CONTENT_EXPIRY_FIELDSETS
@@ -89,7 +90,7 @@ class ContentExpiryAdmin(admin.ModelAdmin):
     def get_urls(self):
         info = self.model._meta.app_label, self.model._meta.model_name
         return [
-            url(
+            re_path(
                 r'^export_csv/$',
                 self.admin_site.admin_view(self.export_to_csv),
                 name="{}_{}_export_csv".format(*info),
@@ -287,6 +288,10 @@ class ContentExpiryAdmin(admin.ModelAdmin):
             'model_admin': self,
             'sortable_by': self.sortable_by
         }
+
+        if version.parse(get_version()) >= version.parse('4.0'):
+            changelist_kwargs['search_help_text'] = self.search_help_text
+
         cl = changelist(**changelist_kwargs)
 
         return cl.get_queryset(request)
