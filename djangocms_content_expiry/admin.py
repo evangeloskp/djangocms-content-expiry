@@ -1,8 +1,6 @@
 import csv
 import datetime
 
-from packaging import version
-
 from django import get_version
 from django.apps import apps
 from django.contrib import admin
@@ -14,6 +12,7 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_versioning.constants import DRAFT, PUBLISHED
 from djangocms_versioning.helpers import get_preview_url
+from packaging import version
 
 from .conf import DEFAULT_CONTENT_EXPIRY_EXPORT_DATE_FORMAT
 from .constants import CONTENT_EXPIRY_FIELDSETS
